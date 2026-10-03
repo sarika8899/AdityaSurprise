@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For Aditya 💖</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top, #ffeaf3 0%, #ffd8eb 28%, #ffc2d7 100%);
+      color: #6d2c52;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .hearts-bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .heart {
+      position: absolute;
+      bottom: -30px;
+      font-size: 22px;
+      color: rgba(255, 255, 255, 0.7);
+      animation: floatUp 12s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) scale(0.8) rotate(0deg);
+        opacity: 0;
+      }
+      25% { opacity: 1; }
+      100% {
+        transform: translateY(-120vh) scale(1.3) rotate(15deg);
+        opacity: 0;
+      }
+    }
+
+    #login {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .login-box {
+      width: min(100%, 440px);
+      background: rgba(255, 255, 255, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 28px;
+      padding: 30px 24px 24px;
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(159, 59, 98, 0.2);
+    }
+
+    .lock-icon {
+      font-size: 48px;
+      margin-bottom: 8px;
+      animation: pulse 1.6s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      font-size: 2rem;
+      color: #7b2d57;
+      letter-spacing: 0.5px;
+    }
+
+    .pass-wrap {
+      position: relative;
+      margin-top: 20px;
+    }
+
+    input[type="password"] {
+      width: 100%;
+      border: none;
+      outline: none;
+      background: rgba(255,255,255,0.7);
+      border-radius: 18px;
+      padding: 16px 18px;
+      font-size: 1.1rem;
+      color: #5c2443;
+      box-shadow: inset 0 2px 10px rgba(177, 93, 123, 0.15);
+    }
+
+    .unlock-btn {
+      width: 100%;
+      margin-top: 16px;
+      border: none;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #ff6ca8, #ff8eb5);
+      color: white;
+      font-weight: 700;
+      padding: 14px 18px;
+      cursor: pointer;
+      font-size: 1rem;
+      box-shadow: 0 10px 20px rgba(255, 108, 168, 0.35);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .unlock-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 25px rgba(255, 108, 168, 0.4);
+    }
+
+    #w {
+      min-height: 24px;
+      margin-top: 14px;
+      color: #b2264f;
+      font-weight: 600;
+    }
+
+    #main {
+      display: none;
+      position: relative;
+      z-index: 1;
+      padding: 30px 20px 60px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .hero {
+      text-align: center;
+      background: rgba(255,255,255,0.28);
+      border: 1px solid rgba(255,255,255,0.6);
+      border-radius: 32px;
+      padding: 30px 20px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 18px 40px rgba(138, 64, 95, 0.12);
+      margin-bottom: 28px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      font-size: 0.82rem;
+      letter-spacing: 2px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.65);
+      color: #8b3f66;
+      font-weight: 700;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      color: #7d234c;
+      line-height: 1.1;
+    }
+
+    .subtitle {
+      font-size: clamp(1rem, 2vw, 1.4rem);
+      color: #7b3860;
+      margin-top: 14px;
+      font-weight: 600;
+    }
+
+    .message {
+      margin: 26px auto 0;
+      max-width: 700px;
+      background: rgba(255,255,255,0.22);
+      border-radius: 22px;
+      padding: 18px 20px;
+      color: #7a2c54;
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+
+    .music-card {
+      margin: 18px auto 28px;
+      max-width: 700px;
+      text-align: center;
+      background: rgba(255,255,255,0.25);
+      border-radius: 22px;
+      padding: 16px 18px;
+      box-shadow: 0 12px 28px rgba(203, 100, 146, 0.12);
+    }
+
+    audio {
+      width: 100%;
+      border-radius: 16px;
+      filter: saturate(1.2);
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-top: 10px;
+    }
+
+    .photo-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+      background: rgba(255,255,255,0.18);
+      padding: 10px;
+      box-shadow: 0 14px 25px rgba(150, 72, 108, 0.14);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .photo-card:hover {
+      transform: translateY(-8px) scale(1.01);
+      box-shadow: 0 18px 35px rgba(150, 72, 108, 0.18);
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      border-radius: 18px;
+      display: block;
+    }
+
+    .footer-note {
+      text-align: center;
+      margin-top: 32px;
+      font-size: 1.2rem;
+      color: #7a2c54;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    @media (max-width: 600px) {
+      .login-box {
+        padding: 24px 18px 18px;
+      }
+
+      h2 {
+        font-size: 1.7rem;
+      }
+
+      .message {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hearts-bg" aria-hidden="true">
+    <span class="heart" style="left:8%; animation-delay:0s;">❤</span>
+    <span class="heart" style="left:20%; animation-delay:2s;">❤</span>
+    <span class="heart" style="left:35%; animation-delay:4s;">❤</span>
+    <span class="heart" style="left:52%; animation-delay:1s;">❤</span>
+    <span class="heart" style="left:68%; animation-delay:5s;">❤</span>
+    <span class="heart" style="left:82%; animation-delay:3s;">❤</span>
+    <span class="heart" style="left:92%; animation-delay:6s;">❤</span>
+  </div>
+
+  <div id="login">
+    <div class="login-box">
+      <div class="lock-icon">🔐</div>
+      <h2>Password 💌</h2>
+
+      <div class="pass-wrap">
+        <input type="password" id="pass" placeholder="Enter the secret code" />
+      </div>
+
+      <button class="unlock-btn" onclick="check()">Unlock the love</button>
+      <p id="w"></p>
+    </div>
+  </div>
+
+  <div id="main">
+    <div class="container">
+      <div class="hero">
+        <div class="hero-badge">For My Favorite Person</div>
+        <h1>Aditya 💖</h1>
+        <p class="subtitle">Happy Boyfriend’s Day 😭❤️</p>
+
+        <div class="message">
+          Every moment with you feels soft, warm, and beautiful. You make life lighter, happier, and a lot more magical.<br>
+          Thank you for being my safe place, my happy place, and the cutest part of my day.
+        </div>
+      </div>
+
+      <div class="music-card">
+        <audio autoplay loop controls>
+          <source src="song.mp3" />
+        </audio>
+      </div>
+
+      <div class="gallery">
+        <div class="photo-card"><img src="photo1.jpg" alt="Photo 1" /></div>
+        <div class="photo-card"><img src="photo2.jpg" alt="Photo 2" /></div>
+        <div class="photo-card"><img src="photo3.jpg" alt="Photo 3" /></div>
+        <div class="photo-card"><img src="photo4.jpg" alt="Photo 4" /></div>
+        <div class="photo-card"><img src="photo5.jpg" alt="Photo 5" /></div>
+      </div>
+
+      <div class="footer-note">You’re my favorite human. Always. 💘</div>
+    </div>
+  </div>
+
+  <script>
+    function check() {
+      const pass = document.getElementById("pass").value;
+      const login = document.getElementById("login");
+      const main = document.getElementById("main");
+      const w = document.getElementById("w");
+
+      if (pass === "2918") {
+        login.style.display = "none";
+        main.style.display = "block";
+      } else {
+        w.innerHTML = "Wrong code 😭 Try again";
+      }
+    }
+  </script>
+
+</body>
+</html>
